@@ -1,0 +1,122 @@
+import type { VocabPair } from './vocab';
+
+// Thai vocabulary, aggregated and deduplicated, capped at 300
+const basics: VocabPair[] = [
+  { ca: 'สวัสดี', en: 'hello' },
+  { ca: 'ไปก่อนนะ', en: 'goodbye' },
+  { ca: 'กรุณา', en: 'please' },
+  { ca: 'ขอบคุณ', en: 'thank you' },
+  { ca: 'ยินดี', en: 'you are welcome' },
+  { ca: 'ขอโทษ', en: 'sorry' },
+  { ca: 'สบายดีไหม', en: 'how are you?' },
+];
+
+const food: VocabPair[] = [
+  { ca: 'น้ำ', en: 'water' },
+  { ca: 'ขนมปัง', en: 'bread' },
+  { ca: 'ไวน์', en: 'wine' },
+  { ca: 'เบียร์', en: 'beer' },
+  { ca: 'กาแฟ', en: 'coffee' },
+  { ca: 'ชา', en: 'tea' },
+  { ca: 'นม', en: 'milk' },
+  { ca: 'ชีส', en: 'cheese' },
+  { ca: 'เนย', en: 'butter' },
+  { ca: 'ไข่', en: 'egg' },
+  { ca: 'เกลือ', en: 'salt' },
+  { ca: 'น้ำตาล', en: 'sugar' },
+  { ca: 'ปลา', en: 'fish' },
+  { ca: 'เนื้อ', en: 'meat' },
+  { ca: 'ไก่', en: 'chicken' },
+  { ca: 'ข้าว', en: 'rice' },
+  { ca: 'น้ำมัน', en: 'oil' },
+  { ca: 'น้ำส้มสายชู', en: 'vinegar' },
+  { ca: 'แอปเปิล', en: 'apple' },
+  { ca: 'ลูกแพร์', en: 'pear' },
+  { ca: 'ส้ม', en: 'orange' },
+  { ca: 'มะนาว', en: 'lemon' },
+  { ca: 'กล้วย', en: 'banana' },
+  { ca: 'องุ่น', en: 'grapes' },
+  { ca: 'มะเขือเทศ', en: 'tomato' },
+  { ca: 'มันฝรั่ง', en: 'potato' },
+  { ca: 'หัวหอม', en: 'onion' },
+  { ca: 'กระเทียม', en: 'garlic' },
+  { ca: 'แครอท', en: 'carrot' },
+  { ca: 'ผักกาดหอม', en: 'lettuce' },
+  { ca: 'สลัด', en: 'salad' },
+  { ca: 'ซุป', en: 'soup' },
+  { ca: 'อาหารเช้า', en: 'breakfast' },
+  { ca: 'อาหารกลางวัน', en: 'lunch' },
+  { ca: 'อาหารเย็น', en: 'dinner' },
+];
+
+const city: VocabPair[] = [
+  { ca: 'เมือง', en: 'city' },
+  { ca: 'อำเภอ', en: 'town' },
+  { ca: 'ย่าน', en: 'neighborhood' },
+  { ca: 'ถนน', en: 'street' },
+  { ca: 'จัตุรัส', en: 'square' },
+  { ca: 'ร้านค้า', en: 'shop' },
+  { ca: 'ตลาด', en: 'market' },
+  { ca: 'ร้านอาหาร', en: 'restaurant' },
+  { ca: 'โรงเรียน', en: 'school' },
+  { ca: 'มหาวิทยาลัย', en: 'university' },
+  { ca: 'งาน', en: 'work' },
+  { ca: 'สำนักงาน', en: 'office' },
+  { ca: 'ห้องสมุด', en: 'library' },
+  { ca: 'ร้านขายยา', en: 'pharmacy' },
+  { ca: 'สถานี', en: 'station' },
+  { ca: 'สวนสาธารณะ', en: 'park' },
+  { ca: 'ชายหาด', en: 'beach' },
+  { ca: 'พิพิธภัณฑ์', en: 'museum' },
+];
+
+const transport: VocabPair[] = [
+  { ca: 'รถยนต์', en: 'car' },
+  { ca: 'รถบัส', en: 'bus' },
+  { ca: 'รถไฟฟ้าใต้ดิน', en: 'subway' },
+  { ca: 'รถไฟ', en: 'train' },
+  { ca: 'เครื่องบิน', en: 'plane' },
+  { ca: 'เรือ', en: 'ship' },
+  { ca: 'จักรยาน', en: 'bicycle' },
+  { ca: 'มอเตอร์ไซค์', en: 'motorbike' },
+  { ca: 'แท็กซี่', en: 'taxi' },
+  { ca: 'ตั๋ว', en: 'ticket' },
+];
+
+const colors: VocabPair[] = [
+  { ca: 'น้ำเงิน', en: 'blue' },
+  { ca: 'แดง', en: 'red' },
+  { ca: 'เขียว', en: 'green' },
+  { ca: 'เหลือง', en: 'yellow' },
+  { ca: 'ดำ', en: 'black' },
+  { ca: 'ขาว', en: 'white' },
+  { ca: 'ส้ม', en: 'orange (color)' },
+  { ca: 'ชมพู', en: 'pink' },
+  { ca: 'ม่วง', en: 'purple' },
+  { ca: 'น้ำตาล', en: 'brown' },
+  { ca: 'เทา', en: 'gray' },
+];
+
+const weekdays: VocabPair[] = [
+  { ca: 'วันจันทร์', en: 'Monday' },
+  { ca: 'วันอังคาร', en: 'Tuesday' },
+  { ca: 'วันพุธ', en: 'Wednesday' },
+  { ca: 'วันพฤหัสบดี', en: 'Thursday' },
+  { ca: 'วันศุกร์', en: 'Friday' },
+  { ca: 'วันเสาร์', en: 'Saturday' },
+  { ca: 'วันอาทิตย์', en: 'Sunday' },
+];
+
+const months: VocabPair[] = [
+  { ca: 'มกราคม', en: 'January' },{ ca: 'กุมภาพันธ์', en: 'February' },{ ca: 'มีนาคม', en: 'March' },{ ca: 'เมษายน', en: 'April' },{ ca: 'พฤษภาคม', en: 'May' },{ ca: 'มิถุนายน', en: 'June' },{ ca: 'กรกฎาคม', en: 'July' },{ ca: 'สิงหาคม', en: 'August' },{ ca: 'กันยายน', en: 'September' },{ ca: 'ตุลาคม', en: 'October' },{ ca: 'พฤศจิกายน', en: 'November' },{ ca: 'ธันวาคม', en: 'December' },
+];
+
+const numbers: VocabPair[] = ([
+  ['ศูนย์','zero'],['หนึ่ง','one'],['สอง','two'],['สาม','three'],['สี่','four'],['ห้า','five'],['หก','six'],['เจ็ด','seven'],['แปด','eight'],['เก้า','nine'],['สิบ','ten'],
+  ['สิบเอ็ด','eleven'],['สิบสอง','twelve'],['สิบสาม','thirteen'],['สิบสี่','fourteen'],['สิบห้า','fifteen'],['สิบหก','sixteen'],['สิบเจ็ด','seventeen'],['สิบแปด','eighteen'],['สิบเก้า','nineteen'],['ยี่สิบ','twenty']
+] as const).map(([ca,en])=>({ca,en}));
+
+const all: VocabPair[] = [...basics, ...food, ...city, ...transport, ...colors, ...weekdays, ...months, ...numbers];
+const dedup = new Map<string, VocabPair>();
+for (const p of all) { const k=`${p.ca}::${p.en}`.toLowerCase(); if(!dedup.has(k)) dedup.set(k,p); }
+export const thVocabPairs: VocabPair[] = Array.from(dedup.values()).slice(0,300);
