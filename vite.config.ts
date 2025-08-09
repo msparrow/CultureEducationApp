@@ -4,6 +4,8 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  // Use relative base path so built assets work on GitHub Pages
+  base: './',
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
