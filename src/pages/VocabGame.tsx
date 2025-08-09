@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { shuffleInPlace, sampleDistinct } from '@utils/game';
 import { GameShell } from '@components/GameShell';
@@ -22,7 +22,7 @@ export default function VocabGame({ direction }: { direction: Direction }) {
 
   useEffect(() => { /* streak removed */ }, []);
 
-  // Restart session when direction or culture changes
+  // Restart session when direction or vocab dataset changes
   useEffect(() => {
     const all = Array.from({ length: vocabPairs.length }, (_, i) => i);
     setIndices(shuffleInPlace(all));
@@ -53,6 +53,17 @@ export default function VocabGame({ direction }: { direction: Direction }) {
     return mixed;
   }, [currentPair?.ca, currentPair?.en, direction, vocabPairs]);
 
+  const timeoutRef = React.useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current !== null) {
+        window.clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+  }, [vocabPairs, direction]);
+
   function handleChoose(idx: number) {
     if (showResult !== 'idle' || !currentPair) return;
     setSelected(idx);
@@ -67,7 +78,7 @@ export default function VocabGame({ direction }: { direction: Direction }) {
     } else {
       setWrong((w) => w + 1);
     }
-    setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       if (questionIndex + 1 >= total) {
         // Mark finished
         setQuestionIndex(total);
@@ -76,6 +87,7 @@ export default function VocabGame({ direction }: { direction: Direction }) {
       }
       setShowResult('idle');
       setSelected(null);
+      timeoutRef.current = null;
     }, 700);
   }
 

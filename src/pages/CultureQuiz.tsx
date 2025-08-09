@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GameShell } from '@components/GameShell';
 import { shuffleInPlace } from '@utils/game';
 import { useCulture } from '../context/CultureContext';
@@ -26,7 +26,7 @@ export default function CultureQuiz() {
     setWrong(0);
     setSelected(null);
     setShowResult('idle');
-  }, [config]);
+  }, [cultureQuestions]);
 
   const total = indices.length;
   if (loading) {
@@ -58,13 +58,24 @@ export default function CultureQuiz() {
     setShowResult('idle');
   }
 
+  const timeoutRef = React.useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current !== null) {
+        window.clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+  }, [cultureQuestions]);
+
   function handleChoose(idx: number) {
     if (showResult !== 'idle' || !presented) return;
     setSelected(idx);
     const ok = idx === presented.answerIndex;
     setShowResult(ok ? 'correct' : 'wrong');
     if (ok) { setScore((s) => s + 1); } else { setWrong((w) => w + 1); }
-    setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       if (questionIndex + 1 >= total) {
         setQuestionIndex(total);
       } else {
@@ -72,6 +83,7 @@ export default function CultureQuiz() {
       }
       setSelected(null);
       setShowResult('idle');
+      timeoutRef.current = null;
     }, 700);
   }
 
